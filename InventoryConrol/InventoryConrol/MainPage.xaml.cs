@@ -21,15 +21,16 @@ namespace InventoryConrol
             Navigation.PushAsync(new Views.InvenotryPage1());
             BindingContext = new Views.InvenotryPage1();
         }
-        async public void btnEdit1Classroom_Clicked(object sender, EventArgs e)
+        async private void btnEdit1Classroom_Clicked(object sender, EventArgs e)
         {
-            string result = await DisplayPromptAsync("Введите название", "What's your name?", initialValue:btn1Classroom.Text);
+            string result = await DisplayPromptAsync("Введите название","", initialValue:btn1Classroom.Text);
             btn1Classroom.Text = result;
         }
 
-        private void btnEdit2Classroom_Clicked(object sender, EventArgs e)
+        async private void btnEdit2Classroom_Clicked(object sender, EventArgs e)
         {
-
+            string result = await DisplayPromptAsync("Введите название", "", initialValue: btn2Classroom.Text,cancel:"Удалить");
+            btn2Classroom.Text = result;
         }
     }
 }
