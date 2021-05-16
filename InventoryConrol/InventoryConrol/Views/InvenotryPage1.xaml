@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="InventoryConrol.Views.InvenotryPage1"
+             xmlns:viewmodels ="clr-namespace:InventoryConrol.ViewModels" 
+             xmlns:models="clr-namespace:InventoryConrol.Models">
+    <ContentPage.BindingContext>
+        <viewmodels:InventroyViewModel/>
+    </ContentPage.BindingContext>
+    <ListView ItemsSource="{Binding Invenotry}"
+              HasUnevenRows="True"
+              ItemTapped="ListView_ItemTapped"
+              SeparatorVisibility="None"
+              IsPullToRefreshEnabled="True"
+              IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+              RefreshCommand="{Binding RefreshCommand}"
+              RefreshControlColor="Red">
+        <ListView.ItemTemplate>
+            <DataTemplate x:DataType="models:Inventory">
+                <ViewCell>
+                    <ViewCell.ContextActions>
+                        <MenuItem Text="Delete" Clicked="MenuItem_Clicked"/>
+                    </ViewCell.ContextActions>
+                    <Grid Padding="10" VerticalOptions="Center">
+                        <Frame CornerRadius="15" HasShadow="True" BackgroundColor="#454545">
+                            <StackLayout Orientation="Horizontal">
+                                <Image Source="TableIcon" WidthRequest="50" VerticalOptions="Center" HorizontalOptions="Start"/>
+                                <StackLayout>
+                                <Label Text="{Binding Name}" FontSize="Large"/>
+                                <Label Text="{Binding Roaster}" FontSize="Large"/>
+                                </StackLayout>
+                            </StackLayout>
+                        </Frame>
+                    </Grid>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+        <ListView.Footer>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                <Button Text="Load more"/>
+            </StackLayout>
+        </ListView.Footer>
+        <ListView.Header>
+            <StackLayout HorizontalOptions="Center">
+                <Frame CornerRadius="30" HeightRequest="30" BackgroundColor="#454545" WidthRequest="300">
+                    <SearchBar/>
+                </Frame>
+            </StackLayout>
+        </ListView.Header>
+    </ListView>
+</ContentPage>

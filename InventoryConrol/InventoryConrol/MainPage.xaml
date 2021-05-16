@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:xct ="http://xamarin.com/schemas/2020/toolkit"
+             x:Class="InventoryConrol.MainPage">
+    <ContentPage.Content>
+        <xct:TabView TabStripPlacement="Bottom" TabStripHeight="70">
+            <xct:TabViewItem BackgroundColor="#454545" Icon="HomeIcon" Text="Home">
+                <xct:TabViewItem.Content>
+                    <Grid RowDefinitions="50,Auto" ColumnDefinitions="300,50">
+                        <Label Text="Кабинеты" HorizontalOptions="Start" Margin="130,15,0,0" FontSize="20" FlowDirection="MatchParent"/>
+                        <Button x:Name="btn1Classroom" Text="1 Кабинет" FontSize="20" CornerRadius="10" HorizontalOptions="Start" WidthRequest="300" TextTransform="None" Clicked="btn1Classroom_Clicked" Grid.Row="1"/>
+                        <Button x:Name="btn2Classroom" Text="2 Кабинет" FontSize="20" CornerRadius="10" TextTransform="None" VerticalOptions="Start" HorizontalOptions="Start" WidthRequest="300" Grid.Row="2"/>
+                        <Button x:Name="btnEdit1Classroom" CornerRadius="30" WidthRequest="50" HeightRequest="50" HorizontalOptions="CenterAndExpand" Grid.Row="1" Grid.Column="1" Clicked="btnEdit1Classroom_Clicked" AbsoluteLayout.LayoutBounds="0.5,0,100,50"
+            AbsoluteLayout.LayoutFlags="PositionProportional"/>
+                        <Image Source="BrushIcon" WidthRequest="50" Grid.Column="1" Grid.Row="1" InputTransparent="True" HorizontalOptions="Center" AbsoluteLayout.LayoutBounds="0.5,0,25,25"
+            AbsoluteLayout.LayoutFlags="PositionProportional"/>
+                        <Button x:Name="btnEdit2Classroom" CornerRadius="30" WidthRequest="50" HeightRequest="50" HorizontalOptions="Start" VerticalOptions="Start" Grid.Row="2" Grid.Column="1" Clicked="btnEdit2Classroom_Clicked"  AbsoluteLayout.LayoutBounds="0.5,0,100,50"
+            AbsoluteLayout.LayoutFlags="PositionProportional"/>
+                        <Image Source="BrushIcon" WidthRequest="50" Grid.Column="1" Grid.Row="2" InputTransparent="True" HorizontalOptions="Center" VerticalOptions="Start" AbsoluteLayout.LayoutBounds="0.5,0,25,25"/>
+                        <Button x:Name="btnAddClassroom" CornerRadius="50" WidthRequest="70" HeightRequest="70" HorizontalOptions="Start" Margin="150,-170,0,0" VerticalOptions="Start" Grid.Row="3" Grid.Column="0" Clicked="btnEdit1Classroom_Clicked" AbsoluteLayout.LayoutBounds="0.5,0,100,50" AbsoluteLayout.LayoutFlags="PositionProportional"/>
+                        <Image Source="PlusIcon" WidthRequest="60" Grid.Column="0" Grid.Row="3" InputTransparent="True" Margin="155,-165,0,0" HorizontalOptions="Start" VerticalOptions="Start" AbsoluteLayout.LayoutBounds="0.5,0,25,25"/>
+                    </Grid>
+                </xct:TabViewItem.Content>
+            </xct:TabViewItem>
+            <xct:TabViewItem BackgroundColor="#454545" Text="About" Icon="AboutIcon">
+                <xct:TabViewItem.Content>
+                    <Grid RowDefinitions="50,Auto" >
+                        <Button Text="Руководство пользователя" TextTransform="None"/>
+                        <Label Text="Разработчик: Бугаенко Николай" FontSize="15" VerticalOptions="End" Margin="21" HorizontalOptions="Center" Grid.Row="1" />
+                    </Grid>
+                </xct:TabViewItem.Content>
+            </xct:TabViewItem>
+        </xct:TabView>
+    </ContentPage.Content>
+</ContentPage>
