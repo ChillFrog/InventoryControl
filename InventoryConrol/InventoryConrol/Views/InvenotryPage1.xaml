@@ -3,7 +3,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="InventoryConrol.Views.InvenotryPage1"
              xmlns:viewmodels ="clr-namespace:InventoryConrol.ViewModels" 
-             xmlns:models="clr-namespace:InventoryConrol.Models">
+             xmlns:models="clr-namespace:InventoryConrol.Models"
+             Background="Black"
+             Shell.NavBarIsVisible="True"
+             x:Name="InventoryPage">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name="AddItem" Text="Добавить" Command="{Binding Source={x:Reference InventoryPage}, Path=BindingContext.AddCommand}"/>
+    </ContentPage.ToolbarItems>
     <ContentPage.BindingContext>
         <viewmodels:InventroyViewModel/>
     </ContentPage.BindingContext>
@@ -18,15 +24,16 @@
         <ListView.ItemTemplate>
             <DataTemplate x:DataType="models:Inventory">
                 <ViewCell>
-                    <ViewCell.ContextActions>
-                        <MenuItem Text="Delete" Clicked="MenuItem_Clicked"/>
+                    <ViewCell.ContextActions x:Uid="1">
+                        <MenuItem x:Name="Deletebtn" Text="Удалить" Command="{Binding Source={x:Reference InventoryPage}, Path=BindingContext.RemoveCommand}" CommandParameter="{Binding .}" IsDestructive="True" />
+                        <MenuItem x:Name="Editbtn" Text="Изменить" Clicked="MenuItem_Clicked"/>
                     </ViewCell.ContextActions>
                     <Grid Padding="10" VerticalOptions="Center">
                         <Frame CornerRadius="15" HasShadow="True" BackgroundColor="#454545">
                             <StackLayout Orientation="Horizontal">
-                                <Image Source="TableIcon" WidthRequest="50" VerticalOptions="Center" HorizontalOptions="Start"/>
+                                <Image Source="{Binding Image}" WidthRequest="50" VerticalOptions="Center" HorizontalOptions="Start"/>
                                 <StackLayout>
-                                <Label Text="{Binding Name}" FontSize="Large"/>
+                                <Label x:Name="NameLb" Text="{Binding Name}" FontSize="Large"/>
                                 <Label Text="{Binding Roaster}" FontSize="Large"/>
                                 </StackLayout>
                             </StackLayout>

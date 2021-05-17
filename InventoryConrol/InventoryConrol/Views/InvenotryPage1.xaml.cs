@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 using Xamarin.Forms;
+using InventoryConrol.ViewModels;
+using InventoryConrol.Models;
 using Xamarin.Forms.Xaml;
+using InventoryConrol.Services;
 
 namespace InventoryConrol.Views
 {
@@ -17,14 +19,14 @@ namespace InventoryConrol.Views
             InitializeComponent();
         }
 
-        private void MenuItem_Clicked(object sender, EventArgs e)
-        {
-
-        }
-
         private void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             ((ListView)sender).SelectedItem = null;
+        }
+
+        async private void MenuItem_Clicked(object sender, EventArgs e)
+        {
+
         }
     }
 }
