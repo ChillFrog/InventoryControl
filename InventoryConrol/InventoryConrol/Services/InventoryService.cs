@@ -20,15 +20,14 @@ namespace InventoryConrol.Services
                 db = new SQLiteAsyncConnection(databasePath);
                 await db.CreateTableAsync<Inventory>();
         }
-        public static async Task AddInventory(string name, string roaster)
+        public static async Task AddInventory(string name, string amountNeeded, string amountScanned)
         {
             await Init();
-            var image = "http://pngimg.com/uploads/table/table_PNG7005.png";
             var inventory = new Inventory
             {
                 Name = name,
-                Roaster = roaster,
-                Image = image
+                AmountNeeded = amountNeeded,
+                AmountScanned = amountScanned,
             };
            var id = await db.InsertAsync(inventory);
         }

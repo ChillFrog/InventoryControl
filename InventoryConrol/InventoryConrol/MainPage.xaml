@@ -14,13 +14,13 @@
                 <xct:TabViewItem.Content>
                     <Grid RowDefinitions="50,Auto" ColumnDefinitions="300,50">
                         <Label Text="Кабинеты" HorizontalOptions="Start" Margin="130,15,0,0" FontSize="20" FlowDirection="MatchParent"/>
-                        <Button x:Name="btn1Classroom" Text="1 Кабинет" FontSize="20" CornerRadius="10" HorizontalOptions="Start" WidthRequest="300" TextTransform="None" Clicked="btn1Classroom_Clicked" Grid.Row="1"/>
-                        <Button x:Name="btn2Classroom" Text="2 Кабинет" FontSize="20" CornerRadius="10" TextTransform="None" VerticalOptions="Start" HorizontalOptions="Start" WidthRequest="300" Grid.Row="2"/>
-                        <Button x:Name="btnEdit1Classroom" CornerRadius="30" WidthRequest="50" HeightRequest="50" HorizontalOptions="CenterAndExpand" Grid.Row="1" Grid.Column="1" Clicked="btnEdit1Classroom_Clicked" AbsoluteLayout.LayoutBounds="0.5,0,100,50"
+                        <Button x:Name="Btn1Classroom" Text="1 Кабинет" FontSize="20" CornerRadius="10" HorizontalOptions="Start" WidthRequest="300" TextTransform="None" Clicked="Btn1Classroom_Clicked" Grid.Row="1"/>
+                        <Button x:Name="Btn2Classroom" Text="2 Кабинет" FontSize="20" CornerRadius="10" TextTransform="None" VerticalOptions="Start" HorizontalOptions="Start" WidthRequest="300" Grid.Row="2"/>
+                        <Button x:Name="BtnEdit1Classroom" CornerRadius="30" WidthRequest="50" HeightRequest="50" HorizontalOptions="CenterAndExpand" Grid.Row="1" Grid.Column="1" Clicked="BtnEdit1Classroom_Clicked" AbsoluteLayout.LayoutBounds="0.5,0,100,50"
             AbsoluteLayout.LayoutFlags="PositionProportional"/>
                         <Image Source="ic_action_create" WidthRequest="40" Grid.Column="1" Grid.Row="1" Margin="0,4,0,0" InputTransparent="True" HorizontalOptions="Center" VerticalOptions="Start" AbsoluteLayout.LayoutBounds="0.5,0,25,25"
             AbsoluteLayout.LayoutFlags="PositionProportional"/>
-                        <Button x:Name="btnEdit2Classroom" CornerRadius="30" WidthRequest="50" HeightRequest="50" HorizontalOptions="Start" VerticalOptions="Start" Grid.Row="2" Grid.Column="1" Clicked="btnEdit2Classroom_Clicked"  AbsoluteLayout.LayoutBounds="0.5,0,100,50"
+                        <Button x:Name="BtnEdit2Classroom" CornerRadius="30" WidthRequest="50" HeightRequest="50" HorizontalOptions="Start" VerticalOptions="Start" Grid.Row="2" Grid.Column="1" Clicked="BtnEdit2Classroom_Clicked"  AbsoluteLayout.LayoutBounds="0.5,0,100,50"
             AbsoluteLayout.LayoutFlags="PositionProportional"/>
                         <Image Source="ic_action_create" WidthRequest="40" Grid.Column="1" Grid.Row="2" Margin="0,4,0,0" InputTransparent="True" HorizontalOptions="Center" VerticalOptions="Start" AbsoluteLayout.LayoutBounds="0.5,0,25,25"/>
                         <Button x:Name="btnAddClassroom" CornerRadius="50" WidthRequest="70" HeightRequest="70" HorizontalOptions="Start" Margin="150,-170,0,0" VerticalOptions="Start" Grid.Row="3" Grid.Column="0" AbsoluteLayout.LayoutBounds="0.5,0,100,50" AbsoluteLayout.LayoutFlags="PositionProportional"/>

@@ -26,15 +26,15 @@
                 <ViewCell>
                     <ViewCell.ContextActions x:Uid="1">
                         <MenuItem x:Name="Deletebtn" Text="Удалить" Command="{Binding Source={x:Reference InventoryPage}, Path=BindingContext.RemoveCommand}" CommandParameter="{Binding .}" IsDestructive="True" />
-                        <MenuItem x:Name="Editbtn" Text="Изменить" Clicked="MenuItem_Clicked"/>
+                        <MenuItem x:Name="Editbtn" Text="Изменить" Clicked="Editbtn_Clicked"/>
                     </ViewCell.ContextActions>
                     <Grid Padding="10" VerticalOptions="Center">
                         <Frame CornerRadius="15" HasShadow="True" BackgroundColor="#454545">
                             <StackLayout Orientation="Horizontal">
-                                <Image Source="{Binding Image}" WidthRequest="50" VerticalOptions="Center" HorizontalOptions="Start"/>
                                 <StackLayout>
                                 <Label x:Name="NameLb" Text="{Binding Name}" FontSize="Large"/>
-                                <Label Text="{Binding Roaster}" FontSize="Large"/>
+                                <Label Text="{Binding AmountNeeded}" FontSize="Large"/>
+                                <Label Text="{Binding AmountScanned}" FontSize="Large"/>
                                 </StackLayout>
                             </StackLayout>
                         </Frame>

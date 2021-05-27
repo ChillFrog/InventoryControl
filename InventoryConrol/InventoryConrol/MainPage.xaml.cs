@@ -17,32 +17,31 @@ namespace InventoryConrol
             InitializeComponent();
         }
 
-        async public void btn1Classroom_Clicked(object sender, EventArgs e)
+        async public void Btn1Classroom_Clicked(object sender, EventArgs e)
         {
             await Shell.Current.GoToAsync($"{nameof(InvenotryPage1)}");
         }
-        async private void btnEdit1Classroom_Clicked(object sender, EventArgs e)
+        async private void BtnEdit1Classroom_Clicked(object sender, EventArgs e)
         {
-            string result = await DisplayPromptAsync("Введите название","", initialValue:btn1Classroom.Text, cancel: "Отмена");
+            string result = await DisplayPromptAsync("Введите название","", initialValue:Btn1Classroom.Text, cancel: "Отмена");
             if (string.IsNullOrWhiteSpace(result) == false)
             {
-                btn1Classroom.Text = result;
+                Btn1Classroom.Text = result;
             }
         }
 
-        async private void btnEdit2Classroom_Clicked(object sender, EventArgs e)
+        async private void BtnEdit2Classroom_Clicked(object sender, EventArgs e)
         {
-            string result = await DisplayPromptAsync("Введите название", "", initialValue: btn2Classroom.Text,cancel:"Отмена");
+            string result = await DisplayPromptAsync("Введите название", "", initialValue: Btn2Classroom.Text,cancel:"Отмена");
             if (string.IsNullOrWhiteSpace(result) == false)
             {
-                 btn2Classroom.Text = result;
+                 Btn2Classroom.Text = result;
             }
         }
 
-        private void ExitToolbarItem_Clicked(object sender, EventArgs e)
+        async private void ExitToolbarItem_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new LoginPage());
-            BindingContext = new LoginPage();
+            await Shell.Current.GoToAsync($"//{nameof(LoginPage)}");
         }
     }
 }

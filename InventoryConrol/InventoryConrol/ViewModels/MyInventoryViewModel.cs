@@ -9,6 +9,7 @@ using System.Windows.Input;
 using MvvmHelpers.Commands;
 using InventoryConrol.Models;
 using InventoryConrol.Services;
+using InventoryConrol.Views;
 
 namespace InventoryConrol.ViewModels 
 {
@@ -19,21 +20,19 @@ namespace InventoryConrol.ViewModels
         public AsyncCommand RefreshCommand { get; }
         public AsyncCommand<Inventory> AddCommand { get; }
         public AsyncCommand<Inventory>RemoveCommand { get; }
-      
+
         public MyInventoryViewModel()
         {
-
             RefreshCommand = new AsyncCommand(Refresh);
             AddCommand = new AsyncCommand<Inventory>(Add);
             Invenotry = new ObservableRangeCollection<Inventory>();
             RemoveCommand = new AsyncCommand<Inventory>(Remove);
+            Invenotry.Add(new Inventory { Name = "Hello", AmountNeeded = "12", AmountScanned = "11" });
         }
         async Task Add(Inventory inventory)
         {
-            var name = await App.Current.MainPage.DisplayPromptAsync("Name","");
-            var roaster = await App.Current.MainPage.DisplayPromptAsync("Roaster","");
-            await InventoryService.AddInventory(name, roaster);
-            await Refresh();
+            var route = $"{nameof(AddInventoryPage)}";
+            await Shell.Current.GoToAsync ($"{nameof(AddInventoryPage)}");
         }
         async Task Remove(Inventory inventory)
         {

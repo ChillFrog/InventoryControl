@@ -15,4 +15,7 @@
     <ShellItem Route="InventoryPage1">
         <ShellContent ContentTemplate="{DataTemplate local:InvenotryPage1}"/>
     </ShellItem>
+    <ShellItem Route="AddInventoryPage">
+        <ShellContent ContentTemplate="{DataTemplate local:AddInventoryPage}"/>
+    </ShellItem>
 </Shell>

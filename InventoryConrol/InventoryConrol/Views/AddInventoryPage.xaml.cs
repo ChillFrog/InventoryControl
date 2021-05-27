@@ -3,28 +3,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Xamarin.Forms;
 using InventoryConrol.ViewModels;
 using InventoryConrol.Models;
-using Xamarin.Forms.Xaml;
 using InventoryConrol.Services;
+using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
 
 namespace InventoryConrol.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class InvenotryPage1 : ContentPage
+    public partial class AddInventoryPage : ContentPage
     {
-        public InvenotryPage1()
+        public AddInventoryPage()
         {
             InitializeComponent();
         }
 
-        private void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
-        {
-            ((ListView)sender).SelectedItem = null;
-        }
-
-        private void Editbtn_Clicked(object sender, EventArgs e)
+        private void Button_Clicked(object sender, EventArgs e)
         {
 
         }

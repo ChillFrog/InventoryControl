@@ -8,6 +8,7 @@ using MvvmHelpers;
 using System.Windows.Input;
 using MvvmHelpers.Commands;
 using InventoryConrol.Models;
+using InventoryConrol.Views;
 using InventoryConrol.Services;
 
 namespace InventoryConrol.ViewModels
@@ -27,23 +28,14 @@ namespace InventoryConrol.ViewModels
             RefreshCommand = new AsyncCommand(Refresh);
             AddCommand = new AsyncCommand<Inventory>(Add);
             RemoveCommand = new AsyncCommand<Inventory>(Remove);
-            var image = "http://pngimg.com/uploads/table/table_PNG7005.png";
             Invenotry = new ObservableRangeCollection<Inventory>();
-            Invenotry.Add(new Inventory { Roaster = "2", Name = "Table", Image = image });
-            Invenotry.Add(new Inventory { Roaster = "3", Name = "Table", Image = image });
-            Invenotry.Add(new Inventory { Roaster = "3", Name = "Table", Image = image });
-            Invenotry.Add(new Inventory { Roaster = "3", Name = "Table", Image = image });
-            Invenotry.Add(new Inventory { Roaster = "3", Name = "Table", Image = image });
-            Invenotry.Add(new Inventory { Roaster = "3", Name = "Table", Image = image });
             //InventoryGroups.Add(new Grouping<string, Inventory>("Мебель", Invenotry.Take(2)));
-            
+            Invenotry.Add(new Inventory { Name = "Hello", AmountNeeded = "12", AmountScanned = "11" });
+
         }
         async Task Add(Inventory inventory)
         {
-            var name = await App.Current.MainPage.DisplayPromptAsync("Name", "Roaster");
-            var roaster = await App.Current.MainPage.DisplayPromptAsync("Roaster", "Roaster");
-            await InventoryService.AddInventory(name, roaster);
-            await Refresh();
+            await Shell.Current.GoToAsync($"{nameof(AddInventoryPage)}");
         }
         async Task Remove(Inventory inventory)
         {
@@ -58,18 +50,6 @@ namespace InventoryConrol.ViewModels
             var inventories = await InventoryService.GetInventory();
             Invenotry.AddRange(inventories);
             IsBusy = false;
-        }
-        void LoadMore()
-        {
-            if (Invenotry.Count >= 10)
-                return;
-            Invenotry.Add(new Inventory { Roaster = "2", Name = "Table", Image = "TableIcon.png" });
-            Invenotry.Add(new Inventory { Roaster = "3", Name = "Table", Image = "TableIcon.png" });
-            Invenotry.Add(new Inventory { Roaster = "3", Name = "Table", Image = "TableIcon.png" });
-            Invenotry.Add(new Inventory { Roaster = "3", Name = "Table", Image = "TableIcon.png" });
-            Invenotry.Add(new Inventory { Roaster = "3", Name = "Table", Image = "TableIcon.png" });
-            Invenotry.Add(new Inventory { Roaster = "3", Name = "Table", Image = "TableIcon.png" });
-
         }
     }
 }
