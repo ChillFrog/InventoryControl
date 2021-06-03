@@ -27,12 +27,20 @@ namespace InventoryConrol.ViewModels
             AddCommand = new AsyncCommand<Inventory>(Add);
             Invenotry = new ObservableRangeCollection<Inventory>();
             RemoveCommand = new AsyncCommand<Inventory>(Remove);
-            Invenotry.Add(new Inventory { Name = "Hello", AmountNeeded = "12", AmountScanned = "11" });
         }
         async Task Add(Inventory inventory)
         {
-            var route = $"{nameof(AddInventoryPage)}";
-            await Shell.Current.GoToAsync ($"{nameof(AddInventoryPage)}");
+            var name = await App.Current.MainPage.DisplayPromptAsync("Название", "", cancel: "отмена");
+            var amountNeeded = await App.Current.MainPage.DisplayPromptAsync("Количество предметов", "", cancel: "отмена", keyboard: Keyboard.Numeric);
+            var amountScanned = "0";
+            if (string.IsNullOrWhiteSpace(name) ||
+            string.IsNullOrWhiteSpace(amountNeeded) || string.IsNullOrWhiteSpace(amountScanned))
+            {
+                return;
+            }
+
+            await InventoryService.AddInventory(name, amountNeeded, amountScanned);
+            await Refresh();
         }
         async Task Remove(Inventory inventory)
         {

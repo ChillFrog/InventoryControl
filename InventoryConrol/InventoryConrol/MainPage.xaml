@@ -4,7 +4,8 @@
              xmlns:xct ="http://xamarin.com/schemas/2020/toolkit"
              x:Class="InventoryConrol.MainPage"
              Background="Black"
-             Shell.NavBarIsVisible="True">
+             Shell.NavBarIsVisible="True"
+             Shell.FlyoutBehavior="Disabled">
     <ContentPage.ToolbarItems>
         <ToolbarItem x:Name="ExitToolbarItem" Text="Выйти" Clicked="ExitToolbarItem_Clicked"/>
     </ContentPage.ToolbarItems>

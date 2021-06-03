@@ -21,6 +21,7 @@ namespace InventoryConrol.ViewModels
         public AsyncCommand RefreshCommand { get; }
         public AsyncCommand<Inventory> RemoveCommand { get; }
         public AsyncCommand<Inventory> AddCommand { get;}
+        public AsyncCommand<Inventory> SearchForCommand { get; }
 
         public InventroyViewModel()
         {
@@ -30,12 +31,22 @@ namespace InventoryConrol.ViewModels
             RemoveCommand = new AsyncCommand<Inventory>(Remove);
             Invenotry = new ObservableRangeCollection<Inventory>();
             //InventoryGroups.Add(new Grouping<string, Inventory>("Мебель", Invenotry.Take(2)));
-            Invenotry.Add(new Inventory { Name = "Hello", AmountNeeded = "12", AmountScanned = "11" });
 
         }
         async Task Add(Inventory inventory)
         {
-            await Shell.Current.GoToAsync($"{nameof(AddInventoryPage)}");
+
+            var name = await App.Current.MainPage.DisplayPromptAsync("Название","", cancel: "отмена");
+            var amountNeeded = await App.Current.MainPage.DisplayPromptAsync("Количество предметов", "", cancel: "отмена", keyboard: Keyboard.Numeric);
+            var amountScanned = "0";
+            if (string.IsNullOrWhiteSpace(name) ||
+            string.IsNullOrWhiteSpace(amountNeeded) || string.IsNullOrWhiteSpace(amountScanned))
+            {
+                return;
+            }
+
+            await InventoryService.AddInventory(name, amountNeeded, amountScanned);
+            await Refresh();
         }
         async Task Remove(Inventory inventory)
         {

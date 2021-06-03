@@ -13,46 +13,47 @@
     <ContentPage.BindingContext>
         <viewmodels:InventroyViewModel/>
     </ContentPage.BindingContext>
-    <ListView ItemsSource="{Binding Invenotry}"
+    <ContentPage.Content>
+        <Grid Padding="0" VerticalOptions="Center">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <ListView ItemsSource="{Binding Invenotry}"
               HasUnevenRows="True"
-              ItemTapped="ListView_ItemTapped"
+              ItemTapped="EditInventory"
               SeparatorVisibility="None"
               IsPullToRefreshEnabled="True"
               IsRefreshing="{Binding IsBusy, Mode=OneWay}"
               RefreshCommand="{Binding RefreshCommand}"
-              RefreshControlColor="Red">
-        <ListView.ItemTemplate>
-            <DataTemplate x:DataType="models:Inventory">
-                <ViewCell>
-                    <ViewCell.ContextActions x:Uid="1">
-                        <MenuItem x:Name="Deletebtn" Text="Удалить" Command="{Binding Source={x:Reference InventoryPage}, Path=BindingContext.RemoveCommand}" CommandParameter="{Binding .}" IsDestructive="True" />
-                        <MenuItem x:Name="Editbtn" Text="Изменить" Clicked="Editbtn_Clicked"/>
-                    </ViewCell.ContextActions>
-                    <Grid Padding="10" VerticalOptions="Center">
-                        <Frame CornerRadius="15" HasShadow="True" BackgroundColor="#454545">
-                            <StackLayout Orientation="Horizontal">
+              RefreshControlColor="CornflowerBlue" >
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="models:Inventory">
+                    <ViewCell>
+                        <ViewCell.ContextActions x:Uid="1">
+                            <MenuItem x:Name="Deletebtn" Text="Удалить" Command="{Binding Source={x:Reference InventoryPage}, Path=BindingContext.RemoveCommand}" CommandParameter="{Binding .}" IsDestructive="True" />
+                            <MenuItem x:Name="Editbtn" Text="Изменить"/>
+                        </ViewCell.ContextActions>
+                        <Frame CornerRadius="15" HasShadow="True" BackgroundColor="#454545" Padding="10">
+                            <StackLayout Orientation="Horizontal" Spacing="30">
                                 <StackLayout>
-                                <Label x:Name="NameLb" Text="{Binding Name}" FontSize="Large"/>
-                                <Label Text="{Binding AmountNeeded}" FontSize="Large"/>
-                                <Label Text="{Binding AmountScanned}" FontSize="Large"/>
+                                    <Label x:Name="NameLb" Text="{Binding Name}" FontSize="Large"/>
+                                    <Label Text="{Binding AmountNeeded, StringFormat= '{0} Всего'}" FontSize="Large"/>
+                                    <Label Text="{Binding AmountScanned, StringFormat= '{0} Отсканированно'}" FontSize="Large"/>
                                 </StackLayout>
                             </StackLayout>
                         </Frame>
-                    </Grid>
-                </ViewCell>
+                    </ViewCell>
             </DataTemplate>
         </ListView.ItemTemplate>
-        <ListView.Footer>
-            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
-                <Button Text="Load more"/>
-            </StackLayout>
-        </ListView.Footer>
         <ListView.Header>
-            <StackLayout HorizontalOptions="Center">
+            <StackLayout HorizontalOptions="Center" Padding="5">
                 <Frame CornerRadius="30" HeightRequest="30" BackgroundColor="#454545" WidthRequest="300">
-                    <SearchBar/>
+                    <SearchBar Placeholder="Text" x:Name="NameSearch" SearchButtonPressed="SearchBar_SearchButtonPressed"/>
                 </Frame>
             </StackLayout>
         </ListView.Header>
     </ListView>
+        <Button ImageSource="ic_action_photo_camera" Grid.Row="0" BorderRadius="35" TextColor="White" HorizontalOptions="Center" WidthRequest="70" HeightRequest="70" Margin="20" VerticalOptions="End" Clicked="Button_Clicked"/>
+    </Grid>
+    </ContentPage.Content>
 </ContentPage>

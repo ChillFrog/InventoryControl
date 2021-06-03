@@ -19,12 +19,21 @@ namespace InventoryConrol.Views
             InitializeComponent();
         }
 
-        private void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
+        private void EditInventory(object sender, ItemTappedEventArgs e)
         {
-            ((ListView)sender).SelectedItem = null;
+            Inventory details = e.Item as Inventory;
+            if(details!=null)
+            {
+                Navigation.PushAsync(new AddEditInventoryPage(details));
+            }
         }
 
-        private void Editbtn_Clicked(object sender, EventArgs e)
+        private async void Button_Clicked(object sender, EventArgs e)
+        {
+            await Shell.Current.GoToAsync($"{nameof(HomePage)}");
+        }
+
+        private void SearchBar_SearchButtonPressed(object sender, EventArgs e)
         {
 
         }

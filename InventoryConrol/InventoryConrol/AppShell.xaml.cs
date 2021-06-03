@@ -13,7 +13,8 @@ namespace InventoryConrol
             Routing.RegisterRoute(nameof(Views.LoginPage), typeof(Views.LoginPage));
             Routing.RegisterRoute(nameof(Views.RegistrationPage), typeof(Views.RegistrationPage));
             Routing.RegisterRoute(nameof(MainPage), typeof(MainPage));
-            Routing.RegisterRoute(nameof(Views.AddInventoryPage), typeof(Views.AddInventoryPage));
+            Routing.RegisterRoute(nameof(Views.AddEditInventoryPage), typeof(Views.AddEditInventoryPage));
+            Routing.RegisterRoute(nameof(Views.HomePage), typeof(Views.HomePage));
         }
     }
 }

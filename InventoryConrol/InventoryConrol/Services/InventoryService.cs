@@ -6,10 +6,11 @@ using System.Text;
 using InventoryConrol.Models;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
+using 
 
 namespace InventoryConrol.Services
 {
-    public static class InventoryService
+    public class InventoryService
     {
         static SQLiteAsyncConnection db;
         static async Task Init()
@@ -38,9 +39,18 @@ namespace InventoryConrol.Services
         }
         public static async Task<IEnumerable<Inventory>> GetInventory()
         {
+            // Получить весь инвентарь
             await Init();
             var inventory = await db.Table<Inventory>().ToListAsync();
             return inventory;
         }
+        public static Task<Inventory> GetNoteAsync(string name)
+        {
+            // Get a specific note.
+            return db.Table<Inventory>()
+                            .Where(i => i.Name == name)
+                            .FirstOrDefaultAsync();
+        }
+        public bool UpdateInventory(Inventory inventory);
     }
 }

@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="InventoryConrol.Views.AddEditInventoryPage"
+             BackgroundColor="Black">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="name"/>
+            <Entry Placeholder="Name" x:Name="name" HorizontalOptions="FillAndExpand"/>
+            <Label Text="AmountScanned"/>
+            <Entry Placeholder="AmmountScanned" x:Name="amountscanned" HorizontalOptions="FillAndExpand"/>
+            <Label Text="AmountNeeded"/>
+            <Entry Placeholder="AmmountNeeded" x:Name="amountneeded" HorizontalOptions="FillAndExpand"/>
+            <Button Text="Save" HorizontalOptions="FillAndExpand" x:Name="Savebtn" Clicked="Savebtn_Clicked"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
